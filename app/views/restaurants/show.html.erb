@@ -1,0 +1,31 @@
+<div class="container" id="show">
+  <div class="">
+    <h1>Restaurant</h1>
+    <%= link_to "Back to list", restaurants_path, class: "btn btn-info" %>
+  </div>
+  <div>
+    <%= simple_form_for(@restaurant) do |f| %>
+      <%= f.input :name, disabled:true %>
+      <%= f.input :address, disabled:true %>
+      <%= f.input :phone_number, disabled:true %>
+      <%= f.input :category, disabled:true %>
+    <% end %>
+    <br>
+    <h1>Reviews</h1>
+    <ul class="list-group">
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item">
+          <%= review.rating %>/5
+          <br>
+          <i><%= review.content %></i>
+        </li>
+      <% end %>
+    </ul>
+    <br>
+    <%= simple_form_for [@restaurant, @review] do |r| %>
+      <%= r.input :rating %>
+      <%= r.input :content %>
+      <%= r.submit class: "btn btn-info" %>
+    <% end %>
+    <br>
+</div>

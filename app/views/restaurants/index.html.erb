@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>The world best restaurants</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @restaurants.each do |restaurant| %>
+        <tr>
+          <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+          <td><%= restaurant.address %></td>
+          <td><%= restaurant.phone_number %></td>
+          <td><%= restaurant.category %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Add a new Restaurant", new_restaurant_path, class: "btn btn-info" %>
+</div>
